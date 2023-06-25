@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container">
+        <h1 class="text-center mt-4" style="color: #007bff;">Consultar inasistencias</h1>
+        <form class="mt-4" action="{{ url_for('consultar') }}" method="post">
+            <div class="form-group mb-4">
+                <label class="mb-2" for="dni">DNI del estudiante:</label>
+                <input class="form-control" type="text" name="dni" id="dni" required>
+            </div>
+            <div class="text-center mb-4">
+                <button class="btn" type="submit" style="background-color: #4caf50;">Consultar</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}

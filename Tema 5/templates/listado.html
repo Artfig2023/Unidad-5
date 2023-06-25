@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container">
+        <h1 class="text-center mt-4" style="color: #2196f3;">Listado de asistencia</h1>
+        <table class="table mt-4">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Asistencia</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for estudiante in lista %}
+                    <tr>
+                        <td>{{ estudiante.nombre }}</td>
+                        <td>{{ estudiante.apellido }}</td>
+                        <td>
+                            {% if estudiante.asistio == 's' %}
+                                <span style="color: #4caf50;">Sí</span>
+                            {% elif estudiante.asistio == 'n' %}
+                                <span style="color: #f44336;">No</span>
+                            {% else %}
+                                <span style="color: #9e9e9e;">No existe registro de asistencia para la fecha seleccionada</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="{{ url_for('home') }}" class="btn" style="background-color: #9e9e9e;">Volver al inicio</a>
+    </div>
+{% endblock %}

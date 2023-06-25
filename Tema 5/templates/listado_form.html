@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container">
+        <h1 class="text-center mt-4" style="color: #ff5722;">Listado de asistencia</h1>
+        <form method="POST" action="{{ url_for('listado_asistencia', curso_id=curso_id) }}" class="mt-4">
+            <div class="form-group mb-4">
+                <label for="fecha">Fecha:</label>
+                <input type="date" name="fecha" class="form-control" required>
+            </div>
+            <div class="form-group mb-4">
+                <label for="codigoclase">Clase:</label>
+                <select name="codigoclase" class="form-control">
+                    <option value="1">Aula</option>
+                    <option value="2">Educación física</option>
+                </select>
+            </div>
+            <button type="submit" class="btn" style="background-color: #4caf50;">Consultar</button>
+            <a href="{{ url_for('home') }}" class="btn" style="background-color: #9e9e9e;">Volver al inicio</a>
+        </form>
+    </div>
+{% endblock %}

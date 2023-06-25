@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container">
+        <h1 class="text-center mt-4" style="color: #2196f3;">Inasistencias</h1>
+        <table class="table mt-4">
+            <thead style="background-color: #f5f5f5;">
+                <tr>
+                    <th>Fecha</th>
+                    <th>Tipo de clase</th>
+                    <th>Justificación</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for inasistencia in inasistencias %}
+                    <tr>
+                        <td>{{ inasistencia.fecha.strftime("%d/%m/%Y") }}</td>
+                        <td>{{ "Aula" if inasistencia.codigoclase == 1 else "Educación física" }}</td>
+                        <td>{{ inasistencia.justificacion }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div class="text-center mt-4">
+            <a class="btn" href="{{ url_for('home') }}" style="background-color: #9e9e9e;">Volver al inicio</a>
+        </div>
+    </div>
+{% endblock %}

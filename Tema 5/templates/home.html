@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container">
+        <h1 class="text-center mt-4" style="color: #ff9800;">Bienvenido al Sistema de Asistencia</h1>
+
+        {% if tipo_usuario == 'preceptor' %}
+            <h2 class="mt-4">Cursos asignados:</h2>
+            <div class="form-group">
+                <select class="form-control" id="cursoSelect" style="background-color: #e0e0e0;">
+                    <option value="" selected disabled hidden>Seleccione un curso</option>
+                    {% for curso in cursos %}
+                        <option value="{{ curso.id }}">Año: {{ curso.anio }}°, División: {{ curso.division }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div id="funcionalidades">
+                <ul class="list-group mt-4">
+                    <li class="list-group-item"><a id="registrarAsistencia" href="#" style="color: #673ab7;">Registrar Asistencia</a></li>
+                    <li class="list-group-item"><a id="informeDetallado" href="#" style="color: #f44336;">Informe Detallado</a></li>
+                    <li class="list-group-item"><a id="listadoAsistencia" href="#" style="color: #009688;">Listado de Asistencia</a></li>
+                </ul>
+            </div>
+            <script>
+                document.getElementById("cursoSelect").addEventListener("change", function() {
+                    var cursoId = this.value;
+                    document.getElementById("registrarAsistencia").href = "{{ url_for('registrar_asistencia', curso_id=0) | replace('0', '') }}"+cursoId;
+                    document.getElementById("informeDetallado").href = "{{ url_for('informe', curso_id=0) | replace('0', '') }}"+cursoId;
+                    document.getElementById("listadoAsistencia").href = "{{ url_for('listado_asistencia', curso_id=0) | replace('0', '') }}"+cursoId;
+                });
+            </script>
+
+        {% else %}
+            <ul class="mt-4">
+                <li><a href="{{ url_for('consultar') }}">Consulte las inasistencias de su hijo</a></li>
+            </ul>
+        {% endif %}
+
+        <div class="text-center mt-4">
+            <a class="btn" href="{{ url_for('logout') }}" style="background-color: #9e9e9e;">Cerrar sesión</a>
+        </div>
+    </div>
+{% endblock %}

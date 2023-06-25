@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-sm-6">
+                <form method="POST" action="{{ url_for('login') }}" class="mt-4">
+                    <div class="form-group mb-4">
+                        <label for="email" style="color: #2196f3;">Correo electrónico:</label>
+                        <input type="email" name="email" class="form-control" id="email" placeholder="Correo electrónico" required>
+                    </div>
+                    <div class="form-group mb-4">
+                        <label for="password" style="color: #2196f3;">Contraseña:</label>
+                        <input type="password" name="password" class="form-control" id="password" placeholder="Contraseña" required>
+                    </div>
+                    <div class="form-group mb-4">
+                        <label for="user_type" style="color: #2196f3;">Tipo de usuario:</label>
+                        <select name="user_type" class="form-control" id="user_type" required>
+                            <option value="" disabled selected style="color: #9e9e9e;">Selecciona un tipo de usuario</option>
+                            <option value="preceptor" style="color: #2196f3;">Preceptor</option>
+                            <option value="padre" style="color: #2196f3;">Padre</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn" style="background-color: #4caf50;">Ingresar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
