@@ -27,7 +27,7 @@ def registrar_asistencia():
             
             registro_asistencia = Asistencia(
                 idestudiante=estudiante.id,
-                fecha=datetime.strptime(fecha, "%Y-%m-%d").date(),
+                fecha = datetime.strptime(fecha, "%Y-%m-%d").date(),
                 codigoclase=clase,
                 asistio=asistencia,
                 justificacion=justificacion if asistencia == 'n' else ''
