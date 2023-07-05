@@ -18,7 +18,7 @@
 
                 {% for inasistencia in inasistencias %}
                     <tr>
-                        <td>{{ inasistencia.fecha.strftime("%d/%m/%Y") }}</td>
+                        <td>{{ inasistencia.fecha }}</td>
                         <td>{{ "Aula" if inasistencia.codigoclase == 1 else "Educación física" }}</td>
                         <td>{{ inasistencia.justificacion }}</td>
                     </tr>
